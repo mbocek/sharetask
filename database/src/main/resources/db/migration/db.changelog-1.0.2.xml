@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+						http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+	<changeSet id="add version to workspace" author="mbocek">
+		<addColumn tableName="WORKSPACE">
+			<column name="VERSION" type="BIGINT" remarks="Version number for workspace" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet id="mark version as not null for workspace" author="mbocek">
+		<addNotNullConstraint tableName="WORKSPACE" columnName="VERSION" defaultNullValue="0" columnDataType="BIGINT" />
+	</changeSet>
+
+	<changeSet id="add version to task" author="mbocek">
+		<addColumn tableName="TASK">
+			<column name="VERSION" type="BIGINT" remarks="Version number for task" />
+		</addColumn>
+	</changeSet>
+	
+	<changeSet id="mark version as not null for task" author="mbocek">
+		<addNotNullConstraint tableName="TASK" columnName="VERSION" defaultNullValue="0" columnDataType="BIGINT" />
+	</changeSet>
+</databaseChangeLog>

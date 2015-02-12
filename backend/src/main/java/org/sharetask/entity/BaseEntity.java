@@ -27,6 +27,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 
 import lombok.Getter;
 
@@ -44,6 +45,10 @@ public abstract class BaseEntity extends BaseImmutableEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATED_ON", nullable = false)
 	private Date updatedOn;
+	
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Long version;
 
 	@Getter
 	@LastModifiedBy
