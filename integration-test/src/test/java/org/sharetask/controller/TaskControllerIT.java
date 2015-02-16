@@ -21,6 +21,7 @@ package org.sharetask.controller;
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -29,8 +30,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import org.sharetask.data.IntegrationTest;
-import org.springframework.http.HttpStatus;
+import org.sharetask.test.IntegrationTest;
 
 /**
  * @author Michal Bocek
@@ -53,7 +53,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPost);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpGet);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"message\":\"Vivamus diam "));
     }
@@ -81,7 +81,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpGet);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"message\":\"TASK_CREATED\""));
     }
@@ -96,7 +96,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpGet);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"username\":\"dev1@shareta.sk\""));
     }
@@ -115,7 +115,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPost);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
     
     @Test
@@ -128,7 +128,7 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPost);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
     
     @Test
@@ -141,6 +141,6 @@ public class TaskControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpDelete);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 }

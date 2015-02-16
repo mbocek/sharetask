@@ -21,6 +21,7 @@ package org.sharetask.controller;
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
@@ -29,8 +30,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import org.sharetask.data.IntegrationTest;
-import org.springframework.http.HttpStatus;
+import org.sharetask.test.IntegrationTest;
 
 /**
  * @author Michal Bocek
@@ -58,7 +58,7 @@ public class UserControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPost);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"username\":\"it@shareta.sk\""));
         Assert.assertTrue(responseData.contains("\"mobilePhone\":\"+420123456789\""));
@@ -80,7 +80,7 @@ public class UserControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPut);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"name\":\"Integration\""));
     }
@@ -95,7 +95,7 @@ public class UserControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpGet);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"name\":\"John\""));
         Assert.assertTrue(responseData.contains("\"surName\":\"Developer\""));

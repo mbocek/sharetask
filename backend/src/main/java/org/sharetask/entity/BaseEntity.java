@@ -30,6 +30,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -47,6 +48,7 @@ public abstract class BaseEntity extends BaseImmutableEntity {
 	private Date updatedOn;
 	
 	@Version
+	@Getter	@Setter
 	@Column(name = "VERSION", nullable = false)
 	private Long version;
 

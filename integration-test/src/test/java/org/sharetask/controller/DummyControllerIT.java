@@ -22,13 +22,13 @@ import java.io.IOException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.http.HttpStatus;
 
 /**
  * @author Michal Bocek
@@ -36,7 +36,11 @@ import org.springframework.http.HttpStatus;
  */
 public class DummyControllerIT {
 
-    private static final String URL = "http://localhost:8088/sharetask/api/info";
+	public static final String BASE = System.getProperty("application.base.url") == null ? "http://localhost:8080/sharetask"
+			: System.getProperty("application.base.url");
+	public static final String BASE_PATH = "/api/info";
+	
+	public static final String URL = BASE + BASE_PATH;
     
     @Test
     public void testIfAppIsUp() throws IOException {
@@ -48,7 +52,7 @@ public class DummyControllerIT {
         HttpResponse response = client.execute(httpget);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         HttpEntity entity = response.getEntity();
         if (entity != null) {
         	String result = EntityUtils.toString(entity);

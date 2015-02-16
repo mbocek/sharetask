@@ -61,6 +61,7 @@ public class WorkspaceConverter implements CustomConverter {
 		workspaceDTO.setId(source.getId());
 		workspaceDTO.setTitle(source.getTitle());
 		workspaceDTO.setDescription(source.getDescription());
+		workspaceDTO.setVersion(source.getVersion());
 		if (source.getOwner() != null) {
 			workspaceDTO.setOwner(DTOConverter.convert(source.getOwner(), UserInfoDTO.class));
 		}
@@ -75,6 +76,7 @@ public class WorkspaceConverter implements CustomConverter {
 		final Workspace workspace = destination == null ? new Workspace() : destination;
 		workspace.setTitle(sourceDTO.getTitle());
 		workspace.setDescription(sourceDTO.getDescription());
+		workspace.setVersion(sourceDTO.getVersion());
 		return workspace;
 	}
 }

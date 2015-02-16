@@ -8,7 +8,6 @@ import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
-@DefaultUrl("http://localhost:8080/sharetask")
 public class MainPage extends PageObject {
 
 	@FindBy(xpath = "//div/div[@class=\"navbar-inner\"]/div[@class=\"container\"]/ul/li/a[@href=\"/sharetask/signin\"]")

@@ -16,40 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.sharetask.api.dto;
+package org.sharetask.controller;
 
-import java.util.Collection;
-
-import javax.validation.constraints.NotNull;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import spock.lang.Specification;
 
 /**
  * @author Michal Bocek
  * @since 1.0.0
  */
-@ToString
-public class WorkspaceDTO {
+class SampleSpecification extends Specification {
 
-	@Getter @Setter
-	private Long id;
-
-	@Getter @Setter
-	private Long version;
-
-	@NotNull
-	@Getter	@Setter
-	private String title;
-
-	@Getter	@Setter
-	private String description;
-
-	@NotNull
-	@Getter	@Setter
-	private UserInfoDTO owner;
-	
-	@Getter @Setter
-	private Collection<UserDTO> members;
+	def "Sample test"() {
+		expect: true
+	}
 }

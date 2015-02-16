@@ -23,6 +23,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -33,8 +34,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import org.sharetask.data.IntegrationTest;
-import org.springframework.http.HttpStatus;
+import org.sharetask.test.IntegrationTest;
 
 /**
  * @author Michal Bocek
@@ -47,9 +47,8 @@ public class WorkspaceControllerIT extends IntegrationTest {
     
     @Test
     public void testFindWorkspaceByOwner() throws IOException, URISyntaxException {
-    	final URIBuilder builder = new URIBuilder();
-    	builder.setScheme(SCHEMA).setHost(HOST).setPath(BASE_PATH + WORKSPACE_PATH)
-    	    .setParameter("type", "OWNER");
+    	final URIBuilder builder = new URIBuilder(URL_WORKSPACE);
+    	builder.setParameter("type", "OWNER");
     	final URI uri = builder.build();
         //given
         final HttpGet httpGet = new HttpGet(uri);
@@ -58,7 +57,7 @@ public class WorkspaceControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpGet);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"title\":\"ABX Agency\""));
     }
@@ -75,7 +74,7 @@ public class WorkspaceControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPost);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 
     @Test
@@ -93,7 +92,7 @@ public class WorkspaceControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPut);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"title\":\"Test Title\""));
     }    
@@ -113,7 +112,7 @@ public class WorkspaceControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpPut);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         final String responseData = EntityUtils.toString(response.getEntity());
         Assert.assertTrue(responseData.contains("\"username\":\"dev2@shareta.sk\""));
     }
@@ -128,6 +127,6 @@ public class WorkspaceControllerIT extends IntegrationTest {
         final HttpResponse response = getClient().execute(httpDelete);
  
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
     }
 }

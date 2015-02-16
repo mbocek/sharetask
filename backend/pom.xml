@@ -500,91 +500,9 @@
 				</plugins>
 			</build>
 		</profile>
+		<!--  this profile is not necessary at the moment
 		<profile>
 			<id>integration</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-failsafe-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>integration-test</goal>
-									<goal>verify</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<systemPropertyVariables>
-								<user.timezone>GMT</user.timezone>
-								<definition.directory.log>${basedir}/target</definition.directory.log>
-							</systemPropertyVariables>
-						</configuration>						
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<configuration>
-							<container>
-								<containerId>tomcat7x</containerId>
-								<type>installed</type>
-								<home>${catalina.home}</home>
-								<!-- <log>cargo.log</log> -->
-								<systemProperties>
-									<spring.profiles.active>${spring.profile}</spring.profiles.active>
-									<user.timezone>GMT</user.timezone>
-									<definition.directory.log>${basedir}/target</definition.directory.log>
-								</systemProperties>
-							</container>
-							<type>existing</type>
-							<home>${catalina.home}</home>
-							<configuration>
-								<properties>
-									<cargo.servlet.port>8088</cargo.servlet.port>
-									<!-- <cargo.logging>high</cargo.logging> -->
-								</properties>
-							</configuration>					
-						</configuration>
-						<executions>
-							<execution>
-								<id>start-tomcat</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>start</goal>
-									<goal>deploy</goal>
-								</goals>
-								<configuration>
-									<deployer>
-										<!-- You have to again specify that the type for the deployer -->
-										<type>installed</type>
-										<deployables>
-											<!-- This deployable specifies the webapp you want to deploy -->
-											<deployable>
-											    <groupId>${project.groupId}</groupId>
-											    <artifactId>${project.artifactId}</artifactId>
-											    <type>war</type>
-											    <pingURL>http://localhost:8088/sharetask/api/info</pingURL>
-											    <pingTimeout>300000</pingTimeout>
-											    <properties>
-											        <context>/sharetask</context>
-											    </properties>
-											</deployable>
-										</deployables>
-									</deployer>
-								</configuration>
-							</execution>
-							<execution>
-								<id>stop-tomcat</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>			
-			</build>
 			<properties>
 				<spring.profile>integration</spring.profile>
 				<definition.hibernate.dialect>org.hibernate.dialect.HSQLDialect</definition.hibernate.dialect>
@@ -605,7 +523,7 @@
 					<artifactId>hsqldb</artifactId>
 				</dependency>
 			</dependencies>
-		</profile>
+		</profile>-->
 		<profile>
 			<id>openshift</id>
 			<properties>
@@ -833,10 +751,6 @@
 		<dependency>
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jacoco</groupId>

@@ -6,7 +6,7 @@ import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
 
-@DefaultUrl("http://localhost:8080/sharetask/signin")
+@DefaultUrl("/signin")
 public class SigninPage extends PageObject {
 
 	@FindBy(name = "username")

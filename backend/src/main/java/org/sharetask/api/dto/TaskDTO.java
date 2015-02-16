@@ -37,6 +37,9 @@ public class TaskDTO {
 	@Getter @Setter
 	private Long id;
 
+	@Getter @Setter
+	private Long version;
+
 	@NotNull
 	@Getter	@Setter
 	private String title;

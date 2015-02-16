@@ -13,6 +13,7 @@
 	<modules>
 		<module>database</module>
 		<module>backend</module>
+		<module>integration-test</module>
 		<module>openshift</module>
 		<module>administration</module>
 	</modules>
@@ -180,7 +181,11 @@
 					<artifactId>native2ascii-maven-plugin</artifactId>
 					<version>1.0-beta-1</version>
 				</plugin>
-
+				<plugin>
+					<groupId>org.codehaus.gmaven</groupId>
+					<artifactId>gmaven-plugin</artifactId>
+					<version>1.4</version>
+				</plugin>
 				<!--Repoting plugins definition -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -260,7 +265,17 @@
 					<!-- <configuration>
 						<deployAtEnd>true</deployAtEnd>
 					</configuration> -->
-				</plugin>						
+				</plugin>
+	            <plugin>
+	                <groupId>net.thucydides.maven.plugins</groupId>
+	                <artifactId>maven-thucydides-plugin</artifactId>
+	                <version>${thucydides.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.9.1</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -362,6 +377,11 @@
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+	        <dependency>
+	            <groupId>org.slf4j</groupId>
+	            <artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+	        </dependency>
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
@@ -407,6 +427,26 @@
 			<dependency>
 				<groupId>com.fasterxml.jackson.core</groupId>
 				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotation</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-joda</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.datatype</groupId>
+				<artifactId>jackson-datatype-guava</artifactId>
 				<version>${jackson.version}</version>
 			</dependency>
         	<dependency>
@@ -534,6 +574,43 @@
 				<version>1.6.1</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.spockframework</groupId>
+				<artifactId>spock-core</artifactId>
+				<version>0.7-groovy-2.0</version>
+				<scope>test</scope>
+			</dependency>			
+			<dependency>
+				<groupId>org.codehaus.groovy</groupId>
+				<artifactId>groovy-all</artifactId>
+				<version>2.3.9</version>
+				<scope>test</scope>
+			</dependency>
+	        <dependency>
+	            <groupId>net.thucydides</groupId>
+	            <artifactId>thucydides-core</artifactId>
+	            <version>${thucydides.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>net.thucydides</groupId>
+	            <artifactId>thucydides-junit</artifactId>
+	            <version>${thucydides.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>net.thucydides</groupId>
+	            <artifactId>thucydides-jbehave-plugin</artifactId>
+	            <version>${thucydides.jbehave.version}</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>com.googlecode.lambdaj</groupId>
+	            <artifactId>lambdaj</artifactId>
+	            <version>2.3.3</version>
+	        </dependency>
+	        <dependency>
+	            <groupId>org.easytesting</groupId>
+	            <artifactId>fest-assert</artifactId>
+	            <version>1.4</version>
+	        </dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -630,6 +707,9 @@
 		<jodatime.version>2.7</jodatime.version>
 		<sonar.host.url>https://tools.shareta.sk/sonar</sonar.host.url>
 		<target.directory>target</target.directory>
+		<groovyVersion>2.3.2</groovyVersion>
+        <thucydides.version>0.9.275</thucydides.version>
+        <thucydides.jbehave.version>0.9.275</thucydides.jbehave.version>
 		
 		<definition.majorVersion>1</definition.majorVersion>
 		<definition.minorVersion>0</definition.minorVersion>

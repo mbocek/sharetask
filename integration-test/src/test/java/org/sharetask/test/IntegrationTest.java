@@ -16,11 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.sharetask.data;
+package org.sharetask.test;
 
 import java.util.TimeZone;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.cookie.Cookie;
@@ -32,7 +33,6 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.springframework.http.HttpStatus;
 
 
 /**
@@ -41,11 +41,11 @@ import org.springframework.http.HttpStatus;
  */
 public class IntegrationTest {
 
-	public static final String SCHEMA = "http";
-	public static final String HOST = "localhost:8088";
-	public static final String BASE_PATH = "/sharetask/api";
+	public static final String BASE = System.getProperty("application.base.url") == null ? "http://localhost:8080/sharetask"
+			: System.getProperty("application.base.url");
+	public static final String BASE_PATH = "/api";
 	
-	public static final String BASE_URL = SCHEMA + "://" + HOST + BASE_PATH;
+	public static final String BASE_URL = BASE + BASE_PATH;
 	
 	private static String SESSIONID;
 	private static String DOMAIN;
@@ -66,7 +66,7 @@ public class IntegrationTest {
         final HttpResponse response = client.execute(httpPost);
 
         //then
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusLine().getStatusCode());
+        Assert.assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
         client.getCookieStore().getCookies();
         for (final Cookie cookie : client.getCookieStore().getCookies()) {
 			if (cookie.getName().equals("JSESSIONID")) {

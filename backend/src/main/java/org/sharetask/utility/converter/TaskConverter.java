@@ -66,6 +66,7 @@ public class TaskConverter implements CustomConverter {
 		taskDTO.setPriority(source.getPriority().name());
 		taskDTO.setTags(source.getTags());
 		taskDTO.setState(source.getState().name());
+		taskDTO.setVersion(source.getVersion());
 		if (source.getAssignee() != null) {
 			final UserInformation assignee = source.getAssignee();
 			taskDTO.setAssignee(DTOConverter.convert(assignee, UserInfoDTO.class));
@@ -82,6 +83,7 @@ public class TaskConverter implements CustomConverter {
 		task.setDueDate(sourceDTO.getDueDate());
 		task.setPriority(PriorityType.valueOf(sourceDTO.getPriority()));
 		task.setTags(sourceDTO.getTags());
+		task.setVersion(sourceDTO.getVersion());
 		return task;
 	}
 }
