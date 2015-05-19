@@ -18,15 +18,38 @@
  */
 package org.sharetask.controller;
 
+import groovyx.net.http.ContentType;
+import groovyx.net.http.Method;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.sharetask.test.JsonRestConnector;
+
+import spock.lang.Shared;
 import spock.lang.Specification;
 
 /**
  * @author Michal Bocek
  * @since 1.0.0
  */
-class SampleSpecification extends Specification {
+abstract class LoginSpec extends Specification {
+	
+    @Shared
+    JsonRestConnector connector
+	
+	@Shared
+	String context
 
-	def "Sample test"() {
-		expect: true
+    def setupSpec() {
+		def defaultUrl = System.getProperties().getProperty("application.base.url")
+        connector = new JsonRestConnector(defaultUrl == null ? 'http://localhost:8080/sharetask/' : defaultUrl)
+
+		def request = ['username':'dev1@shareta.sk','password':'password']
+		connector.post('api/user/login', request)
+    }
+
+	def cleanupSpec() {
+		connector.get('api/user/logout')
 	}
 }

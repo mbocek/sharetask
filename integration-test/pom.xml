@@ -63,6 +63,10 @@
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy.modules.http-builder</groupId>
+			<artifactId>http-builder</artifactId>
 		</dependency>		
     </dependencies>
     <build>
@@ -79,7 +83,7 @@
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>add-source</id>
+						<id>add-test-source</id>
 						<phase>generate-test-sources</phase>
 						<goals>
 							<goal>add-test-source</goal>
@@ -87,6 +91,18 @@
 						<configuration>
 							<sources>
 								<source>src/test/groovy</source>
+							</sources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/groovy</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -109,6 +125,7 @@
 						<executions>
 							<execution>
 								<goals>
+									<goal>compile</goal>
 									<goal>testCompile</goal>
 								</goals>
 							</execution>
@@ -134,6 +151,7 @@
 							<includes>
 								<inclued>**/*IT.java</inclued>
 								<inclued>**/*Specification.java</inclued>
+								<inclued>**/*Spec.java</inclued>
 							</includes>
 						</configuration>						
 		            </plugin>
@@ -153,6 +171,7 @@
 		                    </includes>
 		       				<systemPropertyVariables>
 								<webdriver.base.url>${application.base.url}</webdriver.base.url>
+								<webdriver.driver>${webdriver.driver}</webdriver.driver>
 		       				</systemPropertyVariables>
 		                </configuration>
 		                <executions>
@@ -263,7 +282,7 @@
 			<properties>
 				<!-- app properties -->        
 				<application.port>8089</application.port>
-				<application.base.url>http://localhost:${application.port}/sharetask</application.base.url>
+				<application.base.url>http://localhost:${application.port}/sharetask/</application.base.url>
 
 				<spring.profile>integration</spring.profile>
 			</properties>    		
