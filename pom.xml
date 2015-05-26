@@ -267,9 +267,9 @@
 					</configuration> -->
 				</plugin>
 	            <plugin>
-	                <groupId>net.thucydides.maven.plugins</groupId>
-	                <artifactId>maven-thucydides-plugin</artifactId>
-	                <version>${thucydides.version}</version>
+	                <groupId>net.serenity-bdd.maven.plugins</groupId>
+	                <artifactId>serenity-maven-plugin</artifactId>
+	                <version>${serenitybdd.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -590,19 +590,19 @@
 			    <version>0.7.1</version>
 			</dependency>			
 	        <dependency>
-	            <groupId>net.thucydides</groupId>
-	            <artifactId>thucydides-core</artifactId>
-	            <version>${thucydides.version}</version>
+	            <groupId>net.serenity-bdd</groupId>
+	            <artifactId>core</artifactId>
+	            <version>${serenitybdd.version}</version>
 	        </dependency>
 	        <dependency>
-	            <groupId>net.thucydides</groupId>
-	            <artifactId>thucydides-junit</artifactId>
-	            <version>${thucydides.version}</version>
+	            <groupId>net.serenity-bdd</groupId>
+	            <artifactId>serenity-junit</artifactId>
+	            <version>${serenitybdd.version}</version>
 	        </dependency>
 	        <dependency>
-	            <groupId>net.thucydides</groupId>
-	            <artifactId>thucydides-jbehave-plugin</artifactId>
-	            <version>${thucydides.jbehave.version}</version>
+	            <groupId>net.serenity-bdd</groupId>
+	            <artifactId>serenity-jbehave</artifactId>
+	            <version>${serenitybdd.jbehave.version}</version>
 	        </dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
@@ -708,8 +708,8 @@
 		<sonar.host.url>https://tools.shareta.sk/sonar</sonar.host.url>
 		<target.directory>target</target.directory>
 		<groovyVersion>2.3.2</groovyVersion>
-        <thucydides.version>0.9.275</thucydides.version>
-        <thucydides.jbehave.version>0.9.275</thucydides.jbehave.version>
+        <serenitybdd.version>1.0.47</serenitybdd.version>
+        <serenitybdd.jbehave.version>1.0.21</serenitybdd.jbehave.version>
 		<selenium.version>2.45.0</selenium.version>
 		
 		<definition.majorVersion>1</definition.majorVersion>

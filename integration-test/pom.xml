@@ -28,16 +28,16 @@
     		<type>war</type>
     	</dependency>
         <dependency>
-            <groupId>net.thucydides</groupId>
-            <artifactId>thucydides-core</artifactId>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>core</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.thucydides</groupId>
-            <artifactId>thucydides-junit</artifactId>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-junit</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.thucydides</groupId>
-            <artifactId>thucydides-jbehave-plugin</artifactId>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-jbehave</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -184,11 +184,11 @@
 		                </executions>
 		            </plugin>
 		            <plugin>
-		                <groupId>net.thucydides.maven.plugins</groupId>
-		                <artifactId>maven-thucydides-plugin</artifactId>
+		                <groupId>net.serenity-bdd.maven.plugins</groupId>
+		                <artifactId>serenity-maven-plugin</artifactId>
 		                <executions>
 		                    <execution>
-		                        <id>thucydides-reports</id>
+		                        <id>serenity-reports</id>
 		                        <phase>post-integration-test</phase>
 		                        <goals>
 		                            <goal>aggregate</goal>
