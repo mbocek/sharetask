@@ -604,11 +604,6 @@
 	            <artifactId>serenity-jbehave</artifactId>
 	            <version>${serenitybdd.jbehave.version}</version>
 	        </dependency>
-			<dependency>
-				<groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-java</artifactId>
-				<version>${selenium.version}</version>
-			</dependency>			
 	        <dependency>
 	            <groupId>com.googlecode.lambdaj</groupId>
 	            <artifactId>lambdaj</artifactId>
@@ -710,7 +705,6 @@
 		<groovyVersion>2.3.2</groovyVersion>
         <serenitybdd.version>1.0.47</serenitybdd.version>
         <serenitybdd.jbehave.version>1.0.21</serenitybdd.jbehave.version>
-		<selenium.version>2.45.0</selenium.version>
 		
 		<definition.majorVersion>1</definition.majorVersion>
 		<definition.minorVersion>0</definition.minorVersion>
