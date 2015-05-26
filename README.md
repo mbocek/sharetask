@@ -17,5 +17,6 @@ When you want to run application in tomcat container change jetty goal to tomcat
 Execute tests
 * Run backend integration tests locally
 >	mvn clean verify -Plocal,integration-backend
+
 * Run GUI acceptance tests locally
 >	mvn clean verify -Plocal,integration-ui
